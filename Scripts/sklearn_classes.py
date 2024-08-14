@@ -7,7 +7,7 @@ from sklearn.base import (
     OneToOneFeatureMixin,
     TransformerMixin,
 )
-from st_cache import SENTENCE_TRANSFORMER_CACHE
+from Scripts.st_cache import SENTENCE_TRANSFORMER_CACHE
 
 
 class EncoderTransformer(

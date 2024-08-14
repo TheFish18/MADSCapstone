@@ -9,11 +9,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.pipeline import make_pipeline
 
-from get_statements import get_statements
-from get_prices import get_prices
-from sklearn_classes import EncoderTransformer, SentenceSelector, Condition, Examples, Splitter
-from st_cache import SENTENCE_TRANSFORMER_CACHE
-
+from Scripts.get_statements import get_statements
+from Scripts.get_prices import get_prices
+from Scripts.sklearn_classes import EncoderTransformer, SentenceSelector, Condition, Examples, Splitter
+from Scripts.st_cache import SENTENCE_TRANSFORMER_CACHE
 
 
 parser = argparse.ArgumentParser('Fit Markepulse Models')

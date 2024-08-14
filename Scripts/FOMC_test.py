@@ -2,7 +2,7 @@ import pickle
 import pandas as pd
 
 from metrics import get_scores
-from plots import accuracy_plot, correlation_plot, topic_plot, shap_plot
+from Scripts.plots import accuracy_plot, correlation_plot, topic_plot, shap_plot
 
 def load():
 
