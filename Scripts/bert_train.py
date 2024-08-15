@@ -1,3 +1,4 @@
+"""Train Bert Regressor on Beige Books."""
 import os.path
 from functools import partial
 from typing import Any, Callable, Dict, List
@@ -52,7 +53,7 @@ def train(
         epochs: int,
         model_name: str,
         save_directory: str,
-        print_freq = 10
+        print_freq=10
 ):
     model = model.to(device)
     metric_fns = {'r2': r2_score}
@@ -124,18 +125,25 @@ def train(
 
 
 if __name__ == "__main__":
+    from argparse import ArgumentParser
+
     import torch.nn as nn
     from torch.optim import Adam
 
     from Scripts.Bert.bert_regressor import BertRegressor
     from Scripts.Data.fomc_datasets import FOMCImpactDataset, to_dataloader, train_val_test_split
 
-    p_bb = "../Data/beige_books.csv"
-    p_fomc = "../Data/fomc_impact.csv"
+    parser = ArgumentParser(description="Train a BertRegressor on Beige Books")
+    parser.add_argument("--model_name", "-n", type=str, default="BertRegressor", help="name of the model, default 'BertRegressor'")
+    parser.add_argument("--device", "-d", type=str, default='cpu', help='device to use when training model, default cpu')
+    args = parser.parse_args()
 
-    save_dir = "../Data/Models/BERTModels"
-    model_name = 'Test'
-    device = 'mps'
+    p_bb = "Data/beige_books.csv"
+    p_fomc = "Data/fomc_impact.csv"
+
+    save_dir = "Data/Models/BERTModels"
+    model_name = args.model_name
+    device = args.device
     epochs = 100
     lr = 1e-3
     batch_size = 10
@@ -162,4 +170,3 @@ if __name__ == "__main__":
         save_directory=save_dir,
         print_freq=1
     )
-
