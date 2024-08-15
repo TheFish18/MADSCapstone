@@ -129,11 +129,11 @@ def param_heatmap():
     params = district_params @ score_params
     params = torch.mean(params, dim=0)[0].detach().numpy()
 
-    df = pd.DataFrame(params, index=DISTRICTS, columns=['negative', 'neutral', 'positive'])
+    df = pd.DataFrame(params, index=DISTRICTS, columns=['Positive', 'Neutral', 'Negative'])
 
     sns.heatmap(df)
     plt.tight_layout()
-    plt.savefig("../embed/param_heatmap.png")
+    plt.savefig("../main/embeddings/param_heatmap.png")
     plt.show()
 
 if __name__ == "__main__":
