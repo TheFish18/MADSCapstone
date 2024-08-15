@@ -1,14 +1,14 @@
 import pickle
 import pandas as pd
 
-from metrics import get_scores
-from Scripts.plots import accuracy_plot, correlation_plot, topic_plot, shap_plot
+from Scripts.Viz.metrics import get_scores
+from Scripts.Viz.plots import accuracy_plot, correlation_plot, topic_plot, shap_plot
 
 def load():
 
-    docs = pd.read_parquet('./data/test_statements.parquet')
+    docs = pd.read_parquet('../Data/data/test_statements.parquet')
 
-    prices = pd.read_parquet('./data/prices.parquet')
+    prices = pd.read_parquet('../Data/data/prices.parquet')
     prices = prices.loc[docs.index]
     
     with open('./models/tfidf.pkl', 'rb') as f:

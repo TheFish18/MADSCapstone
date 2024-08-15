@@ -37,7 +37,7 @@ def extract_keywords(text: str | list[str], threshold=0.5):
 if __name__ == "__main__":
     import re
 
-    df = pd.read_csv("../Data/beige_books.csv")
+    df = pd.read_csv("../../Data/beige_books.csv")
     texts = df.text.tolist()
     texts = [re.sub("(\\\\r)|(\\\\n)|(\\\\u)|(\\\\)", "", text) for text in texts]
 

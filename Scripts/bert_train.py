@@ -9,7 +9,7 @@ from torch.optim import Optimizer
 from torch.utils.data import DataLoader
 from sklearn.metrics import r2_score
 
-from Scripts.bert_regressor import BertRegressor
+from Scripts.Bert.bert_regressor import BertRegressor
 
 
 def _accum_metrics(
@@ -127,13 +127,13 @@ if __name__ == "__main__":
     import torch.nn as nn
     from torch.optim import Adam
 
-    from Scripts.bert_regressor import BertRegressor
-    from Scripts.fomc_datasets import FOMCImpactDataset, to_dataloader, train_val_test_split
+    from Scripts.Bert.bert_regressor import BertRegressor
+    from Scripts.Data.fomc_datasets import FOMCImpactDataset, to_dataloader, train_val_test_split
 
     p_bb = "../Data/beige_books.csv"
     p_fomc = "../Data/fomc_impact.csv"
 
-    save_dir = "../Data/Models"
+    save_dir = "../Data/Models/BERTModels"
     model_name = 'Test'
     device = 'mps'
     epochs = 100

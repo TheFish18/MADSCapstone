@@ -8,7 +8,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
-from Scripts.bert_regressor import BertRegressor
+from Scripts.Bert.bert_regressor import BertRegressor
 
 DISTRICTS = [
     'Atlanta', 'Boston', 'Chicago', 'Cleveland', 'Dallas', 'Kansas City', 'Minneapolis',
@@ -16,7 +16,7 @@ DISTRICTS = [
 ]
 
 def log_to_df():
-    p = Path("/Users/joshfisher/PycharmProjects/MADSCapstone/Data/Models/Second/log.txt")
+    p = Path("/Data/Models/Second/log.txt")
 
     with p.open('r') as f:
         lines = f.readlines()
@@ -110,7 +110,7 @@ def scatter():
     plt.show()
 
 def param_heatmap():
-    model_path = r"../Data/Models/Second/bert_regressor_88.pt"
+    model_path = r"../../Data/Models/BERTModels/bert_regressor_88.pt"
     state_dict = torch.load(model_path, map_location=torch.device('cpu'))
     model = BertRegressor()
     model.load_state_dict(state_dict)

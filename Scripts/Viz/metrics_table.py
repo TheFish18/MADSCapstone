@@ -4,9 +4,9 @@ import pandas as pd
 from sklearn.metrics import mean_squared_error, root_mean_squared_error, r2_score
 
 
-df_train = pd.read_csv("../Data/Models/Second/train_88.csv")
-df_val = pd.read_csv("../Data/Models/Second/val_88.csv")
-df_test = pd.read_csv("../Data/Models/Second/test_88.csv")
+df_train = pd.read_csv("../../Data/Models/Second/train_88.csv")
+df_val = pd.read_csv("../../Data/Models/Second/val_88.csv")
+df_test = pd.read_csv("../../Data/Models/Second/test_88.csv")
 
 dfs_names = [(df_train, 'train'), (df_val, 'val'), (df_test, 'test')]
 
