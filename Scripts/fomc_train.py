@@ -10,8 +10,8 @@ from sklearn.pipeline import make_pipeline
 
 from Scripts.Scrape.get_statements import get_statements
 from Scripts.Scrape.get_prices import get_prices
-from Scripts.Data.sklearn_classes import EncoderTransformer, SentenceSelector, Condition, Examples, Splitter
-from Scripts.Data.st_cache import SENTENCE_TRANSFORMER_CACHE
+from Scripts.Dataset.sklearn_classes import EncoderTransformer, SentenceSelector, Condition, Examples, Splitter
+from Scripts.Dataset.st_cache import SENTENCE_TRANSFORMER_CACHE
 
 
 parser = argparse.ArgumentParser('Fit Markepulse Models')
@@ -30,7 +30,7 @@ def mkdir(path):
 
 if __name__ == '__main__':
     from pathlib import Path
-    save_dir = Path("Data")
+    save_dir = Path("Dataset")
     save_dir.mkdir(exist_ok=True)
 
     args = parser.parse_args()

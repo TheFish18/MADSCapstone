@@ -6,7 +6,7 @@ from Scripts.Viz.plots import accuracy_plot, correlation_plot, topic_plot, shap_
 
 def load():
     from pathlib import Path
-    save_dir = Path("Data")
+    save_dir = Path("Dataset")
     model_dir = save_dir / "Models" / "FOMCModels"
     tfidf_path = model_dir / 'tfidf.pkl'
     transformer_path = model_dir / 'transformer.pkl'

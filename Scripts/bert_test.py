@@ -5,7 +5,7 @@ import pandas as pd
 from tqdm import tqdm
 
 from Scripts.Bert.bert_regressor import BertRegressor
-from Scripts.Data.fomc_datasets import FOMCImpactDataset, train_val_test_split
+from Scripts.Dataset.fomc_datasets import FOMCImpactDataset, train_val_test_split
 
 
 def main(model_path: Path, device='cpu'):
@@ -33,7 +33,7 @@ def main(model_path: Path, device='cpu'):
 
 if __name__ == "__main__":
 
-    model_path = Path("Data/Models/BERTModels/bert_regressor_88.pt")
+    model_path = Path("Dataset/Models/BERTModels/bert_regressor_88.pt")
     df = main(model_path)
     p = "Data/Models/BERTModels/bert_regressor_88.csv"
     df.to_csv(p, index=False)

@@ -131,7 +131,7 @@ if __name__ == "__main__":
     from torch.optim import Adam
 
     from Scripts.Bert.bert_regressor import BertRegressor
-    from Scripts.Data.fomc_datasets import FOMCImpactDataset, to_dataloader, train_val_test_split
+    from Scripts.Dataset.fomc_datasets import FOMCImpactDataset, to_dataloader, train_val_test_split
 
     parser = ArgumentParser(description="Train a BertRegressor on Beige Books")
     parser.add_argument("--model_name", "-n", type=str, default="BertRegressor", help="name of the model, default 'BertRegressor'")
@@ -141,7 +141,7 @@ if __name__ == "__main__":
     p_bb = "Data/beige_books.csv"
     p_fomc = "Data/fomc_impact.csv"
 
-    save_dir = "Data/Models/BERTModels"
+    save_dir = "Dataset/Models/BERTModels"
     model_name = args.model_name
     device = args.device
     epochs = 100
