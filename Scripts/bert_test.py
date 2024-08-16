@@ -8,9 +8,9 @@ from Scripts.Bert.bert_regressor import BertRegressor
 from Scripts.Data.fomc_datasets import FOMCImpactDataset, train_val_test_split
 
 
-def main(model_path: Path, device='mps'):
-    p_bb = "../Data/beige_books.csv"
-    p_fomc = "../Data/fomc_impact.csv"
+def main(model_path: Path, device='cpu'):
+    p_bb = "Data/beige_books.csv"
+    p_fomc = "Data/fomc_impact.csv"
 
     dset = FOMCImpactDataset(p_bb, p_fomc, device=device)
     train_dset, val_dset, test_dset = train_val_test_split(dset)
@@ -32,7 +32,8 @@ def main(model_path: Path, device='mps'):
 
 
 if __name__ == "__main__":
-    model_path = Path("../Data/Models/Second/bert_regressor_50.pt")
+
+    model_path = Path("Data/Models/BERTModels/bert_regressor_88.pt")
     df = main(model_path)
-    p = "../Data/Models/Second/test_50.csv"
+    p = "Data/Models/BERTModels/bert_regressor_88.csv"
     df.to_csv(p, index=False)

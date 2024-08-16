@@ -29,11 +29,11 @@ def mkdir(path):
 
 
 if __name__ == '__main__':
+    from pathlib import Path
+    save_dir = Path("Data")
+    save_dir.mkdir(exist_ok=True)
 
     args = parser.parse_args()
-
-    if args.save:
-        mkdir('../Data/data')
 
     docs = get_statements(args.start, args.end)
 
@@ -66,18 +66,20 @@ if __name__ == '__main__':
     X_train, X_test, y_train, y_test = train_test_split(docs, y, test_size=.4, random_state=args.seed)
 
     if args.save:
-        X_train.to_parquet('./data/train_statements.parquet')
-        X_test.to_parquet('./data/test_statements.parquet')
-        prices.to_parquet('./data/prices.parquet')
+        X_train.to_parquet(save_dir / 'train_statements.parquet')
+        X_test.to_parquet(save_dir / 'test_statements.parquet')
+        prices.to_parquet('Data/prices.parquet')
 
     tfidf_model.fit(X_train, y_train)
 
     transformer_model.fit(X_train, y_train)
 
-    mkdir('./models')
+    models_dir = save_dir / "Models/FOMCModels"
+    tfidf_path = models_dir / "tfidf.pkl"
+    transformer_path = models_dir / "transformer.pkl"
 
-    with open('./models/tfidf.pkl', 'wb') as f:
+    with tfidf_path.open('wb') as f:
         pickle.dump(tfidf_model, f)
 
-    with open('./models/transformer.pkl', 'wb') as f:
+    with transformer_path.open('wb') as f:
         pickle.dump(transformer_model, f)

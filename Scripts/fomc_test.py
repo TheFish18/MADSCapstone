@@ -5,23 +5,27 @@ from Scripts.Viz.metrics import get_scores
 from Scripts.Viz.plots import accuracy_plot, correlation_plot, topic_plot, shap_plot
 
 def load():
+    from pathlib import Path
+    save_dir = Path("Data")
+    model_dir = save_dir / "Models" / "FOMCModels"
+    tfidf_path = model_dir / 'tfidf.pkl'
+    transformer_path = model_dir / 'transformer.pkl'
 
-    docs = pd.read_parquet('../Data/data/test_statements.parquet')
+    docs = pd.read_parquet(save_dir / 'test_statements.parquet')
 
-    prices = pd.read_parquet('../Data/data/prices.parquet')
+    prices = pd.read_parquet(save_dir / 'prices.parquet')
     prices = prices.loc[docs.index]
     
-    with open('./models/tfidf.pkl', 'rb') as f:
+    with tfidf_path.open('rb') as f:
         tfidf_model = pickle.load(f)
 
-    with open('./models/transformer.pkl', 'rb') as f:
+    with transformer_path.open('rb') as f:
         transformer_model = pickle.load(f)
 
     return docs, prices, tfidf_model, transformer_model
 
 
 if __name__ == '__main__':
-
     
     docs, prices, tfidf_model, transformer_model = load()
 
